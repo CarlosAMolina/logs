@@ -1,0 +1,24 @@
+version: 1
+formatters:
+  brief:
+    format: '%(levelname)s - %(module)s -  %(message)s'
+  precise:
+    format: '%(asctime)s - %(levelname)s - %(module)s - %(message)s'
+    # Default datfmt shows miliseconds.
+    #datefmt: '%Y-%m-%d %H:%M:%S' 
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: DEBUG
+    formatter: brief
+    stream: ext://sys.stdout
+  file:
+    class : logging.handlers.RotatingFileHandler
+    formatter: precise
+    # If the file does not exist it will be created.
+    filename: logs/logs_files/project.log
+    maxBytes: 1024
+    backupCount: 3
+root:
+  level: DEBUG
+  handlers: [console, file]

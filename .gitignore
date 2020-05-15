@@ -1,0 +1,9 @@
+# Project.
+*.log
+
+# Python.
+*.pyc
+__pycache__
+
+# Vim.
+*.swp
