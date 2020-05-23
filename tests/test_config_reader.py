@@ -2,26 +2,19 @@
 Python 3.
 """
 
-# Standard library imports.
 import os
+import pytest
 import sys
-import unittest
 
-# Third party imports.
 import yaml
 
-# Add workdir to the sys.path.
-sys.path.append(os.getcwd())
-
-# Local application imports.
-# Type config_yaml is dict.
+# Type of config_yaml is dict.
 from files.config_yaml import config as config_yaml
 
 # Path of this script.
 script_path = os.path.dirname(os.path.abspath(__file__))
 
-
-class TestConfigReader(unittest.TestCase):
+class TestConfigReader:
     """Test the config_reader module."""
 
     def test_config_reader(self):
@@ -31,8 +24,8 @@ class TestConfigReader(unittest.TestCase):
         with open(config_file, "r") as f:
             config = yaml.safe_load(f.read())
         # Desired values retrieved after read the file.
-        self.assertEqual(config, config_yaml)
+        assert config == config_yaml
 
 
 if __name__ == '__main__':
-    unittest.main()
+    print(__doc__)
